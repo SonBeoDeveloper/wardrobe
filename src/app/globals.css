@@ -1,20 +1,59 @@
 @import "tailwindcss";
 
-/* Nền sáng cố định — thiết kế User Site theo tông trắng/sáng (mobile-first). */
+/*
+ * Design tokens — trích từ SPEC-landing-page (palette editorial sage).
+ * Nguyên tắc: KHÔNG màu accent bão hòa, KHÔNG trắng/đen tinh, bo góc = 0,
+ * phân lớp bằng độ sáng nền thay vì shadow. Màu ấm (clay/sand) chỉ dùng
+ * cho section kết — không dùng làm màu button/brand.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #eaedea;
+  --foreground: #1c1a1f;
 }
 
 @theme inline {
+  /* Nền chủ đạo — xám ám xanh rêu */
+  --color-sage: #9fa4a0;
+  --color-sage-dim: #7b807c;
+
+  /* Panel sáng — off-white ngả xanh */
+  --color-surface: #eaedea;
+  --color-surface-hi: #f7f8f7;
+
+  /* Mực — đen ám tím; primary của toàn site */
+  --color-ink: #1c1a1f;
+  --color-ink-soft: #443c44;
+  --color-primary: #1c1a1f;
+
+  /* Xám trung gian — block ảnh/section tối */
+  --color-slate-mid: #606561;
+  --color-slate-mid-hi: #6a6d6a;
+
+  /* Accent ấm — CHỈ cho section kết / trạng thái đặc biệt */
+  --color-clay: #a78974;
+  --color-clay-deep: #96715a;
+  --color-clay-pale: #c5ab9d;
+  --color-sand: #a69f94;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
   --font-mono: var(--font-geist-mono);
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-wipe: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Focus nhìn thấy được trên nền sage */
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
 }

@@ -54,12 +54,12 @@ function MenuItem({
       title={label}
       className={`relative flex items-center gap-4 rounded-lg px-2 py-3 text-sm font-medium transition-colors justify-center lg:justify-start ${
         active
-          ? "text-blue-600"
-          : "text-slate-700 hover:text-slate-900"
+          ? "text-ink font-semibold"
+          : "text-ink-soft hover:text-ink"
       }`}
     >
       {active && (
-        <span className="absolute -left-6 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r-md bg-blue-600" />
+        <span className="absolute -left-6 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r-md bg-ink" />
       )}
       <Icon className="h-5 w-5 shrink-0" strokeWidth={1.75} />
       <span className="hidden lg:inline">{label}</span>
@@ -69,7 +69,7 @@ function MenuItem({
 
 function GroupLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mb-2 mt-6 text-center text-[10px] font-semibold uppercase tracking-wider text-slate-400 lg:text-left">
+    <p className="mb-2 mt-6 text-center text-[10px] font-semibold uppercase tracking-wider text-ink-soft/70 lg:text-left">
       {children}
     </p>
   );
@@ -79,17 +79,17 @@ export default function AccountSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex h-full w-20 flex-col rounded-2xl bg-white px-6 py-6 shadow-xl shadow-gray-200/50 lg:w-64">
+    <aside className="flex h-full w-20 flex-col border border-ink/10 bg-surface-hi px-6 py-6 lg:w-64">
       {/* Header: logo + tên app */}
-      <div className="mb-2 flex items-center gap-3 border-b border-gray-100 pb-6 justify-center lg:justify-start">
-        <span className="rounded-xl bg-gray-50 p-2">
-          <Aperture className="h-6 w-6 text-slate-800" strokeWidth={1.75} />
+      <div className="mb-2 flex items-center gap-3 border-b border-ink/10 pb-6 justify-center lg:justify-start">
+        <span className="bg-surface p-2">
+          <Aperture className="h-6 w-6 text-ink" strokeWidth={1.75} />
         </span>
         <div className="hidden lg:block">
-          <p className="text-lg font-bold leading-tight text-slate-800">
+          <p className="text-lg font-bold leading-tight text-ink">
             Wardrobe
           </p>
-          <p className="text-xs font-medium text-slate-400">
+          <p className="text-xs font-medium text-ink-soft/70">
             Studio &amp; Rental
           </p>
         </div>
@@ -117,7 +117,7 @@ export default function AccountSidebar() {
         <button
           type="button"
           title="Đăng xuất"
-          className="flex items-center gap-4 rounded-lg px-2 py-3 text-sm font-medium text-rose-500 transition-colors hover:text-rose-600 justify-center lg:justify-start"
+          className="flex items-center gap-4 rounded-lg px-2 py-3 text-sm font-medium text-clay-deep transition-colors hover:text-clay justify-center lg:justify-start"
         >
           <LogOut className="h-5 w-5 shrink-0" strokeWidth={1.75} />
           <span className="hidden lg:inline">Đăng xuất</span>
@@ -125,16 +125,16 @@ export default function AccountSidebar() {
       </nav>
 
       {/* Footer: hồ sơ user — sẽ thay bằng dữ liệu thật từ features/auth */}
-      <div className="mt-6 flex items-center gap-3 border-t border-gray-100 pt-6 justify-center lg:justify-start">
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 text-sm font-bold text-slate-600">
+      <div className="mt-6 flex items-center gap-3 border-t border-ink/10 pt-6 justify-center lg:justify-start">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface text-sm font-bold text-ink-soft">
           KH
         </span>
         <div className="hidden min-w-0 lg:block">
-          <p className="flex items-center gap-1 truncate text-sm font-bold text-slate-800">
+          <p className="flex items-center gap-1 truncate text-sm font-bold text-ink">
             Khách hàng
-            <BadgeCheck className="h-4 w-4 shrink-0 text-blue-600" />
+            <BadgeCheck className="h-4 w-4 shrink-0 text-clay-deep" />
           </p>
-          <p className="truncate text-xs text-slate-400">Thành viên</p>
+          <p className="truncate text-xs text-ink-soft/70">Thành viên</p>
         </div>
       </div>
     </aside>

@@ -8,7 +8,7 @@ export default function AccountLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen gap-6 bg-slate-50 p-4 lg:p-6">
+    <div className="flex min-h-screen gap-6 bg-surface p-4 lg:p-6">
       <AccountSidebar />
       <main className="min-w-0 flex-1">{children}</main>
     </div>
