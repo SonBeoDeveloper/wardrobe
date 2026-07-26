@@ -6,6 +6,12 @@ const u = (id: string, w: number) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&q=80&w=${w}`;
 
 export const marketingImages = {
+  /** S1 — hero: chân dung thời trang tông lạnh */
+  hero: {
+    src: u("photo-1496747611176-843222e1e57c", 1400),
+    alt: "Người mẫu trong trang phục trắng, ánh sáng studio",
+  },
+
   /** S2 — panel giới thiệu: cô dâu + váy, tông lạnh */
   intro: {
     src: u("photo-1515372039744-b8f02a3ae446", 1200),
