@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { RevealList } from "../motion/RevealList";
+import { marketingImages } from "../../images";
 
 // S6 — SPEC §3/S6: payoff màu ấm — nơi DUY NHẤT dùng clay/sand trên trang.
 export function ClosingWarm() {
@@ -10,7 +12,7 @@ export function ClosingWarm() {
           <p className="text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-surface/60">
             [ Bắt đầu ]
           </p>
-          <h2 className="mt-10 font-display text-[clamp(2rem,5vw,4.5rem)] leading-[1] text-surface-hi">
+          <h2 className="mt-10 font-display text-[clamp(2rem,5vw,4.5rem)] leading-none text-surface-hi">
             Sẵn sàng cho buổi chụp của bạn?
           </h2>
           <div className="mt-12 flex flex-wrap gap-4">
@@ -29,14 +31,25 @@ export function ClosingWarm() {
           </div>
         </div>
 
-        {/* Khối chất liệu ấm — placeholder cho ảnh thật (da/gỗ/người) */}
+        {/* Payoff màu ấm — nơi duy nhất của trang có ảnh tông ấm */}
         <RevealList
           className="grid grid-cols-3 gap-3 self-end"
-          items={[
-            <div key="a" className="aspect-[4/5] bg-clay" />,
-            <div key="b" className="aspect-[4/5] bg-sand" />,
-            <div key="c" className="aspect-[4/5] bg-clay-deep" />,
-          ]}
+          items={marketingImages.closing.map((img, i) => (
+            <div
+              key={i}
+              className={`relative aspect-4/5 overflow-hidden bg-clay ${
+                i === 1 ? "mt-8" : ""
+              }`}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(max-width: 768px) 30vw, 15vw"
+                className="object-cover saturate-[0.92] contrast-[1.04]"
+              />
+            </div>
+          ))}
         />
       </div>
 

@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { PanelWipe } from "../motion/PanelWipe";
+import { marketingImages } from "../../images";
 
 // S2 — SPEC §3/S2: chia đôi sage / panel sáng, panel vào bằng wipe theo scroll.
 export function SplitIntro() {
@@ -13,6 +15,15 @@ export function SplitIntro() {
           Không gian chụp, trang phục và kho ảnh cá nhân — trong một nơi duy
           nhất.
         </h2>
+        <div className="relative mt-16 aspect-4/5 max-w-sm overflow-hidden bg-slate-mid">
+          <Image
+            src={marketingImages.intro.src}
+            alt={marketingImages.intro.alt}
+            fill
+            sizes="(max-width: 768px) 88vw, 30vw"
+            className="object-cover saturate-[0.8] contrast-[1.04]"
+          />
+        </div>
       </div>
 
       <PanelWipe className="bg-surface">

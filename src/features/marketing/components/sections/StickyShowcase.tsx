@@ -7,7 +7,9 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
+import Image from "next/image";
 import { PanelWipe } from "../motion/PanelWipe";
+import { marketingImages } from "../../images";
 
 // S5 — SPEC §4.7: section tối, pin bằng position sticky + scale 1→1.08
 // TUYẾN TÍNH theo scroll progress (ease none). Mobile: spec khuyên bỏ pin —
@@ -30,9 +32,16 @@ export function StickyShowcase() {
         <div className="sticky top-0 flex h-svh items-center justify-center overflow-hidden">
           <motion.div
             style={reduced ? undefined : { scale }}
-            className="flex h-full w-full items-center justify-center bg-slate-mid will-change-transform"
+            className="relative flex h-full w-full items-center justify-center bg-slate-mid will-change-transform"
           >
-            <blockquote className="max-w-4xl px-[6vw] text-center">
+            <Image
+              src={marketingImages.showcase.src}
+              alt={marketingImages.showcase.alt}
+              fill
+              sizes="100vw"
+              className="object-cover opacity-40 saturate-[0.6]"
+            />
+            <blockquote className="relative max-w-4xl px-[6vw] text-center">
               <p className="font-display text-[clamp(1.75rem,4vw,3.5rem)] leading-[1.1] text-surface-hi">
                 &ldquo;Bộ ảnh không kết thúc khi buổi chụp kết thúc — nó bắt
                 đầu một kỷ niệm bạn có thể mở lại bất cứ lúc nào.&rdquo;

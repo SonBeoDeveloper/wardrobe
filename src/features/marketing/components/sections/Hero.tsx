@@ -1,8 +1,11 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import { LOADER_DURATION } from "../motion/FlowerLoader";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+// Hero chỉ bắt đầu reveal sau khi màn loader hoa lift lên.
+const BASE = LOADER_DURATION + 0.5;
 
 // S1 — SPEC §4.4: mask reveal từ dưới lên + scale 1.06→1, stagger 80ms/dòng,
 // sau đó HOLD tuyệt đối — không thêm animation nào cho tới khi user scroll.
@@ -16,7 +19,7 @@ export function Hero() {
         className="mb-8 text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-ink-soft"
         initial={reduced ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.9, ease: EASE }}
+        transition={{ duration: 0.8, delay: BASE + 0.9, ease: EASE }}
       >
         Studio chụp ảnh &amp; thuê trang phục
       </motion.p>
@@ -28,7 +31,7 @@ export function Hero() {
               className="block"
               initial={reduced ? false : { y: "110%", scale: 1.06, opacity: 0 }}
               animate={{ y: "0%", scale: 1, opacity: 1 }}
-              transition={{ duration: 1.2, delay: i * 0.08, ease: EASE }}
+              transition={{ duration: 1.2, delay: BASE + i * 0.08, ease: EASE }}
             >
               {line}
             </motion.span>
@@ -40,7 +43,7 @@ export function Hero() {
         className="mt-12 flex items-center gap-3 text-[0.6875rem] uppercase tracking-[0.16em] text-ink-soft"
         initial={reduced ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.3, ease: EASE }}
+        transition={{ duration: 0.8, delay: BASE + 1.3, ease: EASE }}
       >
         <span className="h-px w-10 bg-ink/30" aria-hidden />
         Cuộn để khám phá

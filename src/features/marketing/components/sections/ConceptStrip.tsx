@@ -1,7 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { RevealList } from "../motion/RevealList";
-
-const CONCEPTS = ["Vintage", "Hàn Quốc", "Dạ tiệc", "Tết"];
+import { marketingImages } from "../../images";
 
 // S4 — nền sáng nhất trang (surface-hi), hai lớp reveal lệch pha:
 // khối ảnh xám vào trước, hàng chữ theo sau (RevealList stagger).
@@ -22,11 +22,18 @@ export function ConceptStrip() {
 
       <RevealList
         className="mt-16 grid grid-cols-2 gap-3 md:grid-cols-4"
-        items={CONCEPTS.map((name) => (
-          <Link key={name} href="/concepts" className="group block">
-            {/* Placeholder ảnh concept — thay bằng next/image khi có ảnh thật */}
-            <div className="aspect-[3/4] bg-slate-mid transition-opacity group-hover:opacity-90" />
-            <p className="mt-4 font-display text-xl text-ink">{name}</p>
+        items={marketingImages.concepts.map((c) => (
+          <Link key={c.name} href="/concepts" className="group block">
+            <div className="relative aspect-3/4 overflow-hidden bg-slate-mid">
+              <Image
+                src={c.src}
+                alt={c.alt}
+                fill
+                sizes="(max-width: 768px) 44vw, 22vw"
+                className="object-cover saturate-[0.8] transition-transform duration-700 ease-expo group-hover:scale-[1.04]"
+              />
+            </div>
+            <p className="mt-4 font-display text-xl text-ink">{c.name}</p>
           </Link>
         ))}
       />
